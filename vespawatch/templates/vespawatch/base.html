@@ -45,16 +45,16 @@
                 </ul>
                 <ul class="navbar-nav mr-3">
                     {% if user.is_authenticated %}
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="user-dropdown" role="button" data-toggle="dropdown">{{ user.first_name }} {{ user.last_name }} ({{ user.username }})</a>
-                        <div class="dropdown-menu" aria-labelledby="user-dropdown">
-                            <a class="dropdown-item" href="{% url 'logout' %}">{% trans 'Log out' %}</a>
-                        </div>
-                    </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="user-dropdown" role="button" data-toggle="dropdown">{{ user.first_name }} {{ user.last_name }} ({{ user.username }})</a>
+                            <div class="dropdown-menu" aria-labelledby="user-dropdown">
+                                <a class="dropdown-item" href="{% url 'logout' %}">{% trans 'Log out' %}</a>
+                            </div>
+                        </li>
                     {% else %}
-                    <li class="nav-item">
-                        <a class="btn btn-primary btn-sm" href="{% url 'login' %}">{% trans 'Log in' %}</a>
-                    </li>
+                        <li class="nav-item">
+                            <a class="btn btn-primary btn-sm" href="{% url 'login' %}">{% trans 'Log in' %}</a>
+                        </li>
                     {% endif %}
                 </ul>
 

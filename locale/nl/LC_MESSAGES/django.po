@@ -210,7 +210,7 @@ msgid "nest"
 msgstr ""
 
 #: vespawatch/templates/vespawatch/nest_detail.html:66
-msgid "This nest was created on iNaturalist. You cannot edit it here"
+msgid "This nest was created on iNaturalist: you cannot edit it here."
 msgstr ""
 
 #: vespawatch/templates/vespawatch/new_observation.html:10
@@ -252,5 +252,5 @@ msgid "Close"
 msgstr ""
 
 #: vespawatch/views.py:78 vespawatch/views.py:157
-msgid "You're observation was successfully created."
+msgid "Your observation was successfully created."
 msgstr ""
