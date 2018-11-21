@@ -4,18 +4,12 @@
 {% load i18n %}
 
 {% block content %}
-<main id="vw-main-app" class="container">
-    <div class="row justify-content-center">
-        <div class="col-8">
-            <h1 class="mt-2">{% trans "Did you observe an individual or a nest?" %}</h1>
-            <hr class="mt-0 mb-4">
+<main class="container" id="vw-main-app">
+    <div class="text-center">
+        <h1>{% trans "What did you observe?" %}</h1>
 
-
-                <a class="btn btn-lg btn-primary mr-2" href="{% url 'vespawatch:individual-add' %}?redirect_to={{ redirect_to }}">{% trans 'Individual(s)' %}</a>
-                <a class="btn btn-lg btn-primary mr-2" href="{% url 'vespawatch:nest-add' %}?redirect_to={{ redirect_to }}">{% trans 'Nest' %}</a>
-
-            </form>
-        </div>
+        <a class="btn btn-outline-primary btn-lg" href="{% url 'vespawatch:individual-add' %}?redirect_to={{ redirect_to }}">{% trans 'Individual(s)' %}</a>
+        <a class="btn btn-outline-primary btn-lg" href="{% url 'vespawatch:nest-add' %}?redirect_to={{ redirect_to }}">{% trans 'Nest' %}</a>
     </div>
 </main>
 {% endblock %}
