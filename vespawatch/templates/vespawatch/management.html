@@ -5,8 +5,10 @@
 {% load page_fragments %}
 
 {% block content %}
-
 <main class="container" id="vw-main-app">
+    {% if user.is_staff %}
+        <div class="alert alert-info">{% trans 'You are logged in as an admin user and have access to all zones.' %}</div>
+    {% endif %}
 
     {% if messages %}
         <div class="messages">
