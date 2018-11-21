@@ -2,14 +2,25 @@
 {% load crispy_forms_tags %}
 {% csrf_token %}
 
-<vw-species-selector {% if form.instance.species %}:species-selected="{{ form.instance.species.pk }}"{% endif %} species-api-url="{% url 'vespawatch:api_species' %}" radio-name="species"></vw-species-selector>
+<vw-species-selector
+    {% if form.instance.species %}
+        :species-selected="{{ form.instance.species.pk }}"
+    {% endif %}
+    species-api-url="{% url 'vespawatch:api_species' %}"
+    radio-name="species">
+</vw-species-selector>
 
 {% if object %}
-    <vw-location-selector v-bind:init-coordinates="[{{ object.longitude }}, {{ object.latitude }}]"
-                          init-marker="true"
-                          location="{{ object.location }}"></vw-location-selector>
-    <vw-datetime-selector :is-required="true" hidden-field-name="observation_time"
-                          init-date-time="{{ object.observation_time_iso }}"></vw-datetime-selector>
+    <vw-location-selector
+        v-bind:init-coordinates="[{{ object.longitude }}, {{ object.latitude }}]"
+        init-marker="true"
+        location="{{ object.location }}">
+    </vw-location-selector>
+    <vw-datetime-selector
+        :is-required="true"
+        hidden-field-name="observation_time"
+        init-date-time="{{ object.observation_time_iso }}">
+    </vw-datetime-selector>
 {% else %}
     <vw-location-selector
         {% if form.data %}
@@ -19,11 +30,13 @@
             v-bind:init-coordinates="[4.5, 50.7]"
             init-marker="false"
         {% endif %}
-            location="{{ form.data.location|default_if_none:'' }}"
-    ></vw-location-selector>
-
-    <vw-datetime-selector :is-required="true" hidden-field-name="observation_time"
-                          init-date-time="{{ form.data.observation_time|default_if_none:'' }}"></vw-datetime-selector>
+        location="{{ form.data.location|default_if_none:'' }}">
+    </vw-location-selector>
+    <vw-datetime-selector
+        :is-required="true"
+        hidden-field-name="observation_time"
+        init-date-time="{{ form.data.observation_time|default_if_none:'' }}">
+    </vw-datetime-selector>
 {% endif %}
 
 {{ form.comments|as_crispy_field }}
@@ -34,15 +47,13 @@
 {% endfor %}
 
 {% if user.is_authenticated %}
-    <h3>{% trans "Management action" %}</h3>
+    <h2>{% trans "Management action" %}</h2>
     {{ management_formset.management_form }}
 
     {% for f in management_formset %}
         {{ f|crispy }}
     {% endfor %}
-
 {% else %}
-
     {{ form.observer_title|as_crispy_field }}
     {{ form.observer_last_name|as_crispy_field }}
     {{ form.observer_first_name|as_crispy_field }}
@@ -56,7 +67,5 @@
             </label>
         </div>
     </div>
-
     {% include 'vespawatch/terms_of_service_modal.html' %}
-
 {% endif %}

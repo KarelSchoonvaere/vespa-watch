@@ -14,7 +14,15 @@
 
     <p><a class="btn btn-lg btn-primary" href="{% url 'vespawatch:nest-add' %}?redirect_to=management">{% trans 'Record a nest' %}</a></p>
 
-    <vw-management-page admin="{% if user.is_staff %}1{% else %}0{% endif %}" init-zone='{% if user.profile.zone %}{ "id": {{ user.profile.zone.pk }}, "name": "{{ user.profile.zone.name }}" }{% endif %}'>
+    <vw-management-page
+        {% if user.is_staff %}
+            admin="1"
+        {% else %}
+            admin="0"
+        {% endif %}
+        {% if user.profile.zone %}
+            init-zone='{ "id": {{ user.profile.zone.pk }}, "name": "{{ user.profile.zone.name }}" }'
+        {% endif %}>
     </vw-management-page>
 </main>
 {% endblock %}
