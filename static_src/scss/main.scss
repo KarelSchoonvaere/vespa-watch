@@ -80,5 +80,8 @@ main.container-fluid {
 
     // Non-Bootstrap elements
 
-    
+    h1,
+    h2 {
+        margin-bottom: 1rem; // Extra margin below headers
+    }
 }
